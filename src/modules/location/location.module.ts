@@ -22,7 +22,8 @@ import { MongoLocationRepository } from "./repositories/mongo-location.repositor
 
 
 	],
-	// when we want to switch to another database, we just need to implement the LocationRepository interface for that database and update the provider here without changing the service or controller logic
+	// when we want to switch to another database, we just need to implement the LocationRepository interface for that database
+	// and update the provider here without changing the service or controller logic
 	// 	providers: [
 	//   {
 	//     provide: 'LocationRepository',
