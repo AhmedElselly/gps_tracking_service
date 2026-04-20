@@ -4,6 +4,38 @@
 A minimal backend service for ingesting, storing, and streaming GPS location updates.
 </p>
 
+<h2>🔌 Database Abstraction</h2>
+
+<p>
+The data access layer is designed to be database-agnostic using a repository abstraction.
+Business logic depends on an interface (<code>LocationRepository</code>) rather than a concrete database implementation.
+</p>
+
+<p>
+Currently, MongoDB is used due to its native geospatial support. However, the architecture allows replacing it with other databases (e.g., PostgreSQL with PostGIS) by implementing the same repository interface without changing service logic.
+</p>
+
+<p>
+This approach ensures separation of concerns and keeps the system flexible for future scaling or technology changes.
+</p>
+
+<pre>
+  @Module({
+	imports: [MongooseModule.forFeature([{ name: Location.name, schema: LocationSchema }])],
+	controllers: [LocationController],
+	providers: [
+		LocationService,
+		LocationGateway,
+		RedisService,
+		// Database-agnostic design: We can easily swap out the MongoDB implementation for another database (PostgreSQL, etc.) in the future if needed, without changing the service layer
+		{
+			provide: "LocationRepository",
+			useClass: MongoLocationRepository // This allows us to inject the repository using an interface token 
+		}
+	],
+})
+</pre>
+
 <hr>
 
 <h2>📌 Features</h2>
