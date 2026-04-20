@@ -27,7 +27,8 @@ This approach ensures separation of concerns and keeps the system flexible for f
 		LocationService,
 		LocationGateway,
 		RedisService,
-		// Database-agnostic design: We can easily swap out the MongoDB implementation for another database (PostgreSQL, etc.) in the future if needed, without changing the service layer
+		// Database-agnostic design: We can easily swap out the MongoDB implementation for another database (PostgreSQL, etc.)
+    // in the future if needed, without changing the service layer
 		{
 			provide: "LocationRepository",
 			useClass: MongoLocationRepository // This allows us to inject the repository using an interface token 
@@ -50,16 +51,14 @@ This approach ensures separation of concerns and keeps the system flexible for f
 
 <h2>📡 API</h2>
 
-<h3>POST /locations/batch</h3>
-<pre>{
+<ul>
+  <li><strong>POST /locations/batch</strong> — (Post) Ingest batched location updates</li>
+  <pre>{
   "driverId": "driver-1",
   "locations": [
     { "lat": 30.0444, "lng": 31.2357, "timestamp": 1713350000 }
   ]
 }</pre>
-
-<ul>
-  <li><strong>POST /locations/batch</strong> — (Post) Ingest batched location updates</li>
   <li><strong>GET /locations/latest/:driverId</strong> — Get latest location from Redis and if not found in redis it fallbacks to DB</li>
   <li><strong>GET /locations/history/:driverId</strong> — Get recent history (MongoDB)</li>
   <li><strong>GET /locations/nearby</strong> — Find nearby drivers (geo query)</li>
