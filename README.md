@@ -20,6 +20,7 @@ This approach ensures separation of concerns and keeps the system flexible for f
 </p>
 
 <pre>
+  gps-tracking-service\src\modules\location\location.module.ts
   @Module({
 	imports: [MongooseModule.forFeature([{ name: Location.name, schema: LocationSchema }])],
 	controllers: [LocationController],
@@ -34,6 +35,14 @@ This approach ensures separation of concerns and keeps the system flexible for f
 			useClass: MongoLocationRepository // This allows us to inject the repository using an interface token 
 		}
 	],
+
+  // when we want to switch to another database, we just need to implement the LocationRepository interface for that database and update the provider here without changing the service or controller logic
+	// 	providers: [
+	//   {
+	//     provide: 'LocationRepository',
+	//     useClass: PostgresLocationRepository,
+	//   },
+	// ]
 })
 </pre>
 

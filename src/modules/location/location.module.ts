@@ -18,7 +18,16 @@ import { MongoLocationRepository } from "./repositories/mongo-location.repositor
 		{
 			provide: "LocationRepository",
 			useClass: MongoLocationRepository // This allows us to inject the repository using an interface token 
-		}
+		},
+
+
 	],
+	// when we want to switch to another database, we just need to implement the LocationRepository interface for that database and update the provider here without changing the service or controller logic
+	// 	providers: [
+	//   {
+	//     provide: 'LocationRepository',
+	//     useClass: PostgresLocationRepository,
+	//   },
+	// ]
 })
 export class LocationModule { }
