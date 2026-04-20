@@ -26,9 +26,13 @@ A minimal backend service for ingesting, storing, and streaming GPS location upd
   ]
 }</pre>
 
-<h3>GET /locations/:driverId/latest</h3>
+<h3>GET /locations/latest/:driverId</h3>
 <p>Returns latest location from Redis</p>
-
+<ul>
+  <li><strong>POST /locations/batch</strong> — Ingest batched location updates</li>
+  <li><strong>GET /locations/history/:driverId</strong> — Get recent history (MongoDB)</li>
+  <li><strong>GET /locations/nearby</strong> — Find nearby drivers (geo query)</li>
+</ul>
 <hr>
 
 <h2>🧠 Architecture</h2>

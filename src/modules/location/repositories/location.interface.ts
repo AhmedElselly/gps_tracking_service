@@ -6,4 +6,6 @@ export interface LocationRepository {
 
 	// Find nearby drivers based on latest location data (not required for task, but can be useful)
 	findNearbyLocations(lng: number, lat: number): Promise<any[]>;
+
+	getLocationHistory(driverId: string, limit: number): Promise<any[]>;
 }

@@ -28,4 +28,12 @@ export class LocationController {
 	) {
 		return this.service.findNearbyDrivers(lng, lat);
 	}
+
+	@Get('history/:driverId')
+	getHistory(
+		@Param('driverId') driverId: string,
+		@Query('limit') limit = 10,
+	) {
+		return this.service.getLocationHistory(driverId, Number(limit));
+	}
 }

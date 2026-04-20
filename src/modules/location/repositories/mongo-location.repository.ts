@@ -30,4 +30,8 @@ export class MongoLocationRepository implements LocationRepository {
 			}
 		}).limit(10).exec();
 	}
+
+	async getLocationHistory(driverId: string, limit: number): Promise<Location[]> {
+		return this.locationModel.find({ driverId }).sort({ timestamp: -1 }).limit(limit).exec();
+	}
 }

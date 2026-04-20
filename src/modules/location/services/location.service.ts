@@ -57,4 +57,8 @@ export class LocationService {
 		// This method can be implemented to find nearby drivers based on the latest location data stored in DB
 		return this.locationRepo.findNearbyLocations(lng, lat);
 	}
+
+	async getLocationHistory(driverId: string, limit: number) {
+		return this.locationRepo.getLocationHistory(driverId, limit);
+	}
 }
