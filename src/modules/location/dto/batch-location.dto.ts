@@ -10,6 +10,7 @@ class LocationPoint {
 	@IsNumber()
 	@Min(-180)
 	@Max(180)
+	lng!: number;
 
 	@Transform(({ value }) => new Date(value * 1000))
 	@IsDate()

@@ -52,4 +52,9 @@ export class LocationService {
 		// fallback if not found in cache
 		return this.locationRepo.findLatestLocationByDriver(driverId);
 	}
+
+	async findNearbyDrivers(lng: number, lat: number) {
+		// This method can be implemented to find nearby drivers based on the latest location data stored in DB
+		return this.locationRepo.findNearbyLocations(lng, lat);
+	}
 }

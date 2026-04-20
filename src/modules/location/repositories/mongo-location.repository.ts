@@ -16,4 +16,18 @@ export class MongoLocationRepository implements LocationRepository {
 	async findLatestLocationByDriver(driverId: string): Promise<Location | null> {
 		return this.locationModel.findOne({ driverId }).sort({ timestamp: -1 }).exec();
 	}
+
+	async findNearbyLocations(lng: number, lat: number): Promise<Location[]> {
+		return this.locationModel.find({
+			location: {
+				$near: {
+					$geometry: {
+						type: 'Point',
+						coordinates: [lng, lat],
+					},
+					$maxDistance: 3000,
+				},
+			}
+		}).limit(10).exec();
+	}
 }
