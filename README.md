@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>GPS Tracking Service</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f9f9f9;
-      color: #333;
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-    }
-    pre {
-      background: #eee;
-      padding: 10px;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-<body>
-
 <h1>🚀 GPS Tracking Backend Service</h1>
 
 <p>
@@ -90,6 +66,3 @@ Client → API → MongoDB (history)
   <li>Queue (Kafka / BullMQ)</li>
   <li>Rate limiting</li>
 </ul>
-
-</body>
-</html>
