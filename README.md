@@ -65,7 +65,5 @@ Client → API → MongoDB (history)
 
 <h2>🚀 Future Improvements</h2>
 <ul>
-  <li>Nearby drivers (geo queries)</li>
   <li>Queue (Kafka / BullMQ)</li>
-  <li>Rate limiting</li>
 </ul>
